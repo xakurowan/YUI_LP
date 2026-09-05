@@ -1,8 +1,8 @@
 # CLAUDE.md
 
-`app/YUI_LP` 用のガイダンス。**このディレクトリは独立したgitリポジトリ**
-（`git@github.com:xakurowan/YUI_LP.git`）であり、リポジトリルートにある
-`tomocha`（Next.js予約システム、`app/YUI_RESERVE`）とはコード上の関係を持たない。
+このリポジトリ（`git@github.com:xakurowan/YUI_LP.git`）用のガイダンス。
+別ディレクトリ`yui_reserve/`にある`tomocha`（Next.js予約システム、独立repo）とは
+コード上の関係を持たない。
 唯一の連携点は、LPフッターの「既にご契約中の企業様はこちら」リンク
 （`src/data/site.ts` の `reservationSiteUrl`）のみ。
 
