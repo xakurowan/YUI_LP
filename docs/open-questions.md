@@ -101,7 +101,7 @@
     主要2CTA（見積り依頼・LINE相談）とは別枠の副次的な導線として扱う（詳細は `wireframe.md` 「予約サイト連携」参照）。
     - LP側の実装コストはURL文字列を1つ持つだけで小さい。
     - `?source=yui-corp` を受け取ってtomocha側で記録する実装は、tomocha側リポジトリの別対応となる
-      （具体案：`app/TOMOCHA_WEBSITE/docs/yui-lp-integration.md`）。この対応が完了する前でもLP側のリンクは
+      （具体案：`app/YUI_RESERVE/docs/yui-lp-integration.md`）。この対応が完了する前でもLP側のリンクは
       先に設置してよい（パラメータが無視されるだけで予約自体は現状どおり機能する）。
     - **要確認**：tomochaの本番URL（ドメイン）が未定なので、決まり次第 `src/data/site.ts` に反映する。
 

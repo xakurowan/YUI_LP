@@ -251,7 +251,7 @@ tomochaの予約ページへの導線を1本設ける。初回訪問者向けの
 - リンク先：`https://<tomochaのドメイン>/reserve?source=yui-corp`
   （`<tomochaのドメイン>` は本番URLが決まり次第 `src/data/site.ts` 等の1箇所に集約して差し替える）
 - `?source=yui-corp` は「結 -Yui- の法人LP経由の予約である」ことをtomocha側に伝えるためのクエリパラメータ。
-  tomocha側での受け取り実装が必要（未実装・別途対応。`app/TOMOCHA_WEBSITE/docs/yui-lp-integration.md` に
+  tomocha側での受け取り実装が必要（未実装・別途対応。`app/YUI_RESERVE/docs/yui-lp-integration.md` に
   具体案を記載した。実装はtomocha側のリポジトリでの作業になるため、このLPプロジェクトのスコープ外）
 - LP側はURLに固定のクエリ文字列を付けるだけなので、Astro側の実装コストはほぼゼロ
   （tomocha側の対応が完了していなくてもリンク自体は先に置ける。未対応の間はパラメータが無視されるだけで

@@ -2,7 +2,7 @@
 
 `app/YUI_LP` 用のガイダンス。**このディレクトリは独立したgitリポジトリ**
 （`git@github.com:xakurowan/YUI_LP.git`）であり、リポジトリルートにある
-`tomocha`（Next.js予約システム、`app/TOMOCHA_WEBSITE`）とはコード上の関係を持たない。
+`tomocha`（Next.js予約システム、`app/YUI_RESERVE`）とはコード上の関係を持たない。
 唯一の連携点は、LPフッターの「既にご契約中の企業様はこちら」リンク
 （`src/data/site.ts` の `reservationSiteUrl`）のみ。
 
