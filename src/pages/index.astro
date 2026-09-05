@@ -1,0 +1,404 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+import Container from '../components/Container.astro'
+import CtaButton from '../components/CtaButton.astro'
+import Icon from '../icons/Icon.astro'
+
+import heroMain from '../assets/images/hero-main.png'
+import therapist from '../assets/images/therapist.png'
+import lineQr from '../assets/images/line-qr.png'
+
+import { issues } from '../data/issues'
+import { reasons } from '../data/reasons'
+import { menus } from '../data/menus'
+import { flowSteps } from '../data/flow'
+import { testimonials, testimonialsNote } from '../data/testimonials'
+import { recommendedFor } from '../data/recommended'
+import { corporateBadges, trustBadges } from '../data/corporate'
+import { faqItems } from '../data/faq'
+import { primaryCta, secondaryCta, site } from '../data/site'
+
+const linePending = site.lineUrl === null
+
+const pageTitle = '出張整体で健康経営をサポート｜Private salon 結 -Yui-（法人向け）'
+const pageDescription =
+  'デスクワークによる肩こり・腰痛・疲労感など、社員の不調をケアする法人向け出張整体。国家資格保有の柔道整復師がオフィスへ訪問し、健康経営と働きやすい職場づくりをお手伝いします。'
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <!-- 01. ファーストビュー -->
+  <section class="relative overflow-hidden bg-white">
+    <Container class="grid gap-10 py-16 md:grid-cols-2 md:items-center md:gap-12 md:py-24">
+      <div data-reveal>
+        <p class="font-display text-sm font-bold tracking-wide text-rose-deep">
+          社員の健康は、企業の力になる。
+        </p>
+        <h1 class="mt-3 text-[clamp(2rem,5vw,3.5rem)] font-bold text-ink">
+          出張整体で健康経営を<br class="hidden sm:block" />サポートします
+        </h1>
+        <p class="mt-6 text-base leading-loose text-ink-muted md:text-lg">
+          デスクワークによる肩こり・腰痛・疲労感など、社員の不調をケアし、生産性向上と働きやすい職場づくりをお手伝いします。
+        </p>
+
+        <ul class="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+          {
+            trustBadges.map((badge) => (
+              <li class="flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5 text-xs font-bold text-ink">
+                <Icon name="check" class="h-3.5 w-3.5 text-rose-brand" />
+                {badge}
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+          <CtaButton href={primaryCta.href} variant="primary">{primaryCta.label}</CtaButton>
+          <CtaButton href={secondaryCta.href} variant="secondary" pending={linePending}>
+            {secondaryCta.label}
+          </CtaButton>
+        </div>
+      </div>
+
+      <div data-reveal data-reveal-group="fv-image">
+        <Image
+          src={heroMain}
+          alt="オフィスで出張整体の施術を受ける様子"
+          widths={[480, 800, 1200, 1600]}
+          sizes="(min-width: 768px) 50vw, 100vw"
+          loading="eager"
+          fetchpriority="high"
+          class="w-full rounded-2xl object-cover shadow-card"
+        />
+      </div>
+    </Container>
+    <div id="fv-end-sentinel" aria-hidden="true"></div>
+  </section>
+
+  <!-- 02. 課題提起 -->
+  <section class="bg-rose-tint py-20 md:py-32">
+    <Container>
+      <h2
+        data-reveal
+        class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink"
+      >
+        オフィスで、こんな声が上がっていませんか？
+      </h2>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          issues.map((issue, i) => (
+            <div
+              data-reveal
+              data-reveal-group="issues"
+              style={`transition-delay:${i * 60}ms`}
+              class="flex flex-col items-center gap-4 rounded-2xl border border-line bg-white px-6 py-8 text-center"
+            >
+              <span class="flex h-14 w-14 items-center justify-center rounded-full bg-rose-tint text-rose-brand">
+                <Icon name={issue.icon} class="h-7 w-7" />
+              </span>
+              <p class="text-sm font-bold leading-relaxed text-ink">{issue.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- 03. 共感／ブリッジ -->
+  <section class="bg-white py-24 md:py-36">
+    <Container class="max-w-[720px] text-center">
+      <p data-reveal class="text-lg leading-loose text-ink md:text-xl">
+        不調は、本人の努力不足ではなく、働き方や職場環境から生まれることも少なくありません。
+        <br class="hidden sm:block" />
+        だからこそ、専門家によるケアを職場に取り入れることが、働きやすさへの近道になります。
+      </p>
+    </Container>
+  </section>
+
+  <!-- 04. 選ばれる3つの理由 -->
+  <section class="bg-white pb-20 md:pb-32">
+    <Container>
+      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+        選ばれる3つの理由
+      </h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          reasons.map((reason, i) => (
+            <div
+              data-reveal
+              data-reveal-group="reasons"
+              style={`transition-delay:${i * 60}ms`}
+              class="rounded-2xl border border-line bg-white p-8"
+            >
+              <span class="font-display text-4xl font-bold text-rose-brand">{reason.number}</span>
+              <span class="mt-4 flex h-12 w-12 items-center justify-center rounded-full bg-rose-tint text-rose-brand">
+                <Icon name={reason.icon} class="h-6 w-6" />
+              </span>
+              <h3 class="mt-5 text-lg font-bold text-ink">{reason.title}</h3>
+              <p class="mt-3 text-sm leading-loose text-ink-muted">{reason.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- 05. サービス内容 -->
+  <section id="service" class="bg-rose-tint py-20 md:py-32">
+    <Container>
+      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+        サービス内容
+      </h2>
+      <div class="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+        {
+          menus.map((menu, i) => (
+            <div
+              data-reveal
+              data-reveal-group="menus"
+              style={`transition-delay:${i * 60}ms`}
+              class="overflow-hidden rounded-2xl border border-line bg-white"
+            >
+              <Image
+                src={menu.image}
+                alt={menu.alt}
+                widths={[320, 480, 800]}
+                sizes="(min-width: 768px) 33vw, 50vw"
+                loading="lazy"
+                class="aspect-square w-full object-cover"
+              />
+              <div class="p-4">
+                <p class="text-sm font-bold text-ink">{menu.name}</p>
+                <p class="mt-1 text-xs text-ink-muted">{menu.description}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <p
+        data-reveal
+        class="mt-8 rounded-2xl bg-white px-6 py-4 text-center text-sm font-bold text-ink-muted"
+      >
+        女性社員にも好評。オイルメニューもご用意しています。
+      </p>
+    </Container>
+  </section>
+
+  <!-- 06. 施術者紹介 -->
+  <section class="bg-white py-20 md:py-32">
+    <Container class="grid gap-10 md:grid-cols-2 md:items-center md:gap-16">
+      <Image
+        data-reveal
+        src={therapist}
+        alt="国家資格保有の柔道整復師"
+        widths={[400, 600, 800]}
+        sizes="(min-width: 768px) 50vw, 100vw"
+        loading="lazy"
+        class="w-full rounded-2xl object-cover shadow-card"
+      />
+      <div data-reveal>
+        <h2 class="text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+          国家資格保有の柔道整復師が訪問します
+        </h2>
+        <p class="mt-6 text-base leading-loose text-ink-muted">
+          身体の構造や運動器に関する専門知識を持つ国家資格者（柔道整復師）が、お一人おひとりの状態に合わせて丁寧に施術いたします。
+        </p>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 07. 料金プラン -->
+  <section id="pricing" class="bg-rose-tint py-20 md:py-32">
+    <Container class="max-w-[640px]">
+      <div
+        data-reveal
+        class="rounded-2xl border border-line bg-white px-6 py-12 text-center shadow-card md:px-12"
+      >
+        <p class="text-sm font-bold text-ink-muted">料金プラン</p>
+        <p class="mt-4 font-display text-[clamp(2.5rem,7vw,4rem)] font-bold text-rose-brand">
+          2時間 22,000円〜
+          <span class="text-2xl font-bold text-ink-muted">（税込）</span>
+        </p>
+        <ul class="mt-8 space-y-2 text-sm leading-relaxed text-ink-muted">
+          <li>※出張費・施術費込み（遠方は別途ご相談）</li>
+          <li>延長・定期訪問プランや無料お見積りも承っております。</li>
+        </ul>
+        <div class="mt-8">
+          <CtaButton href={primaryCta.href} variant="primary">{primaryCta.label}</CtaButton>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <!-- 08. ご利用の流れ -->
+  <section id="flow" class="bg-white py-20 md:py-32">
+    <Container>
+      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+        ご利用の流れ
+      </h2>
+      <div class="relative mt-14 grid gap-10 md:grid-cols-4 md:gap-6">
+        <div
+          class="absolute left-0 right-0 top-6 hidden h-px bg-line md:block"
+          aria-hidden="true"
+        >
+        </div>
+        {
+          flowSteps.map((step, i) => (
+            <div
+              data-reveal
+              data-reveal-group="flow"
+              style={`transition-delay:${i * 60}ms`}
+              class="relative flex flex-col items-center text-center md:items-center"
+            >
+              <span class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-rose-brand text-white">
+                <Icon name={step.icon} class="h-6 w-6" />
+              </span>
+              <span class="mt-4 font-display text-sm font-bold text-rose-brand">
+                {step.number}
+              </span>
+              <h3 class="mt-1 font-bold text-ink">{step.title}</h3>
+              <p class="mt-2 text-sm text-ink-muted">{step.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- 09. 導入企業様の声 -->
+  <section class="bg-rose-tint py-20 md:py-32">
+    <Container>
+      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+        導入企業様の声
+      </h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-2">
+        {
+          testimonials.map((t, i) => (
+            <div
+              data-reveal
+              data-reveal-group="testimonials"
+              style={`transition-delay:${i * 60}ms`}
+              class="rounded-2xl border border-line bg-white p-8"
+            >
+              <p class="font-bold text-ink">{t.heading}</p>
+              <p class="mt-4 text-sm leading-loose text-ink-muted">{t.body}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p data-reveal class="mt-6 text-center text-xs text-ink-muted">{testimonialsNote}</p>
+    </Container>
+  </section>
+
+  <!-- 10. こんな企業様におすすめです -->
+  <section class="bg-white py-20 md:py-32">
+    <Container class="max-w-[720px]">
+      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+        こんな企業様におすすめです
+      </h2>
+      <ul class="mt-10 space-y-4">
+        {
+          recommendedFor.map((item, i) => (
+            <li
+              data-reveal
+              data-reveal-group="recommended"
+              style={`transition-delay:${i * 60}ms`}
+              class="flex items-start gap-3 rounded-2xl bg-rose-tint px-5 py-4"
+            >
+              <Icon name="check" class="mt-0.5 h-5 w-5 shrink-0 text-rose-brand" />
+              <span class="text-sm leading-relaxed text-ink md:text-base">{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </Container>
+  </section>
+
+  <!-- 11. 法人対応 -->
+  <section class="bg-rose-tint py-20 md:py-32">
+    <Container>
+      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+        法人対応
+      </h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          corporateBadges.map((badge, i) => (
+            <div
+              data-reveal
+              data-reveal-group="corporate"
+              style={`transition-delay:${i * 60}ms`}
+              class:list={[
+                'flex flex-col items-center gap-4 rounded-2xl border px-6 py-8 text-center',
+                badge.emphasize
+                  ? 'border-rose-brand bg-white shadow-card'
+                  : 'border-line bg-white',
+              ]}
+            >
+              <span class="flex h-14 w-14 items-center justify-center rounded-full bg-rose-tint text-rose-brand">
+                <Icon name={badge.icon} class="h-7 w-7" />
+              </span>
+              <p class="text-sm font-bold text-ink">{badge.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- 12. FAQ -->
+  <section id="faq" class="bg-white py-20 md:py-32">
+    <Container class="max-w-[800px]">
+      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+        よくあるご質問
+      </h2>
+      <div class="mt-10 divide-y divide-line border-t border-b border-line">
+        {
+          faqItems.map((item) => (
+            <details class="group py-5">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-ink">
+                <span>{item.question}</span>
+                <Icon name="plus" class="faq-toggle-icon h-5 w-5 shrink-0 text-rose-brand" />
+              </summary>
+              <p class="mt-4 text-sm leading-loose text-ink-muted">{item.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+
+  <!-- 13. クロージングCTA -->
+  <section class="bg-rose-tint py-20 md:py-32">
+    <Container class="max-w-[720px] text-center">
+      <h2 data-reveal class="text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+        まずは資料や見積りで、社内の検討材料にしてください
+      </h2>
+      <div data-reveal class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <CtaButton href={primaryCta.href} variant="primary">{primaryCta.label}</CtaButton>
+        <CtaButton href={secondaryCta.href} variant="secondary" pending={linePending}>
+          {secondaryCta.label}
+        </CtaButton>
+      </div>
+
+      <div
+        data-reveal
+        class="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row"
+      >
+        <a href={`mailto:${site.email}`} class="font-bold text-rose-deep hover:underline">
+          {site.email}
+        </a>
+        <div class="flex items-center gap-3">
+          <Image
+            src={lineQr}
+            alt="LINE友だち追加QRコード"
+            width={96}
+            height={96}
+            format="png"
+            loading="lazy"
+            class="rounded-lg border border-line bg-white p-1"
+          />
+          <span class="text-sm text-ink-muted">LINEで友だち追加</span>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>

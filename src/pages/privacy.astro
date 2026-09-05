@@ -1,0 +1,63 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Container from '../components/Container.astro'
+import { site } from '../data/site'
+
+const pageTitle = `プライバシーポリシー｜${site.businessName}`
+const pageDescription = `${site.businessName}（法人向け出張整体）のプライバシーポリシーです。`
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <section class="bg-white py-20 md:py-32">
+    <Container class="max-w-[720px]">
+      <h1 class="text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-ink">プライバシーポリシー</h1>
+
+      <div class="mt-10 space-y-8 text-sm leading-loose text-ink-muted">
+        <p>
+          {site.businessName}（以下「当店」といいます）は、お問い合わせいただいたお客様の個人情報を
+          以下のとおり取り扱います。
+        </p>
+
+        <div>
+          <h2 class="text-base font-bold text-ink">取得する情報</h2>
+          <p class="mt-2">
+            当サイトには入力フォームを設置しておりません。お客様がメールまたはLINEで直接ご連絡いただいた際の
+            お名前・連絡先・お問い合わせ内容など、お客様が任意にご提供くださった情報のみを取得します。
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-bold text-ink">利用目的</h2>
+          <p class="mt-2">
+            取得した情報は、お見積りのご案内、日程調整、施術のご提供、アフターフォローなど、
+            ご依頼いただいたサービスの遂行に必要な範囲でのみ利用します。
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-bold text-ink">第三者提供</h2>
+          <p class="mt-2">
+            法令に基づく場合を除き、ご本人の同意なく第三者に個人情報を提供することはありません。
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-bold text-ink">Cookie・アクセス解析について</h2>
+          <p class="mt-2">
+            当サイトでは、Cookieを用いたアクセス解析・広告配信は行っておりません。
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-base font-bold text-ink">開示・訂正・削除等のご請求</h2>
+          <p class="mt-2">
+            保有する個人情報の開示・訂正・削除等をご希望の場合は、下記のメールアドレスまでご連絡ください。
+          </p>
+          <a href={`mailto:${site.email}`} class="mt-2 inline-block font-bold text-rose-deep hover:underline">
+            {site.email}
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>
