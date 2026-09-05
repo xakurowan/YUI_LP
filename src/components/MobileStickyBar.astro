@@ -14,11 +14,21 @@ const linePending = site.lineUrl === null
   >
     {primaryCta.shortLabel}
   </a>
-  <a
-    href={secondaryCta.href}
-    aria-disabled={linePending ? 'true' : undefined}
-    class="flex-1 rounded-full border-2 border-rose-brand px-4 py-3 text-center text-sm font-bold text-rose-deep"
-  >
-    {secondaryCta.shortLabel}
-  </a>
+  {
+    linePending ? (
+      <span
+        aria-disabled="true"
+        class="flex-1 rounded-full border-2 border-rose-brand px-4 py-3 text-center text-sm font-bold text-rose-deep"
+      >
+        {secondaryCta.shortLabel}
+      </span>
+    ) : (
+      <a
+        href={secondaryCta.href}
+        class="flex-1 rounded-full border-2 border-rose-brand px-4 py-3 text-center text-sm font-bold text-rose-deep"
+      >
+        {secondaryCta.shortLabel}
+      </a>
+    )
+  }
 </div>

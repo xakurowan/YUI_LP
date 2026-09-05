@@ -17,9 +17,17 @@ const styles =
 ---
 
 <div class="inline-flex flex-col items-center gap-1.5">
-  <a href={href} class:list={[base, styles, className]}>
-    <slot />
-  </a>
+  {
+    pending ? (
+      <span aria-disabled="true" class:list={[base, styles, className]}>
+        <slot />
+      </span>
+    ) : (
+      <a href={href} class:list={[base, styles, className]}>
+        <slot />
+      </a>
+    )
+  }
   {
     pending && (
       <p class="text-xs text-ink-muted">現在準備中です。お急ぎの方はメールでご連絡ください</p>
