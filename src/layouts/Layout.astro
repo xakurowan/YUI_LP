@@ -1,0 +1,74 @@
+---
+import { getImage } from 'astro:assets'
+import '../styles/global.css'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import MobileStickyBar from '../components/MobileStickyBar.astro'
+import logoMark from '../assets/images/logo-mark.png'
+import heroMain from '../assets/images/hero-main.png'
+import { site } from '../data/site'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+
+const favicon32 = await getImage({ src: logoMark, width: 32, height: 32, format: 'png' })
+const touchIcon = await getImage({ src: logoMark, width: 180, height: 180, format: 'png' })
+const ogImage = await getImage({ src: heroMain, width: 1200, height: 630, format: 'jpg' })
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+const ogImageUrl = new URL(ogImage.src, Astro.site)
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HealthAndBeautyBusiness',
+  name: site.businessName,
+  description,
+  image: ogImageUrl.toString(),
+  url: canonicalUrl.toString(),
+  // 住所・電話番号は未確定のため、確定するまでプロパティごと省略する（空文字・ダミー値は入れない）
+}
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <link rel="icon" type="image/png" sizes="32x32" href={favicon32.src} />
+    <link rel="apple-touch-icon" sizes="180x180" href={touchIcon.src} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="bg-white text-ink">
+    <div id="header-sentinel" aria-hidden="true"></div>
+    <Header />
+    <main id="top" class="pt-16">
+      <slot />
+    </main>
+    <Footer />
+    <MobileStickyBar />
+    <script src="../scripts/interactions.ts"></script>
+  </body>
+</html>

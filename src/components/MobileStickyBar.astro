@@ -1,0 +1,24 @@
+---
+import { primaryCta, secondaryCta, site } from '../data/site'
+
+const linePending = site.lineUrl === null
+---
+
+<div
+  id="mobile-cta-bar"
+  class="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t border-line bg-white p-3 shadow-card md:hidden"
+>
+  <a
+    href={primaryCta.href}
+    class="flex-1 rounded-full bg-rose-brand px-4 py-3 text-center text-sm font-bold text-white"
+  >
+    {primaryCta.shortLabel}
+  </a>
+  <a
+    href={secondaryCta.href}
+    aria-disabled={linePending ? 'true' : undefined}
+    class="flex-1 rounded-full border-2 border-rose-brand px-4 py-3 text-center text-sm font-bold text-rose-deep"
+  >
+    {secondaryCta.shortLabel}
+  </a>
+</div>

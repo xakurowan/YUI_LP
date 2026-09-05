@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets'
+import logoFull from '../assets/images/logo-full.png'
+import Container from './Container.astro'
+import { primaryCta } from '../data/site'
+
+const navItems = [
+  { href: '#service', label: 'サービス' },
+  { href: '#pricing', label: '料金' },
+  { href: '#flow', label: '流れ' },
+  { href: '#faq', label: 'FAQ' },
+]
+---
+
+<header id="site-header" class="fixed inset-x-0 top-0 z-40">
+  <Container class="flex h-16 items-center justify-between">
+    <a href="#top" class="flex items-center gap-2">
+      <Image src={logoFull} alt="Private salon 結 -Yui-" height={40} width={40} loading="eager" />
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-bold text-ink transition-colors hover:text-rose-deep"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <a
+      href={primaryCta.href}
+      class="rounded-full bg-rose-brand px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-rose-deep"
+    >
+      {primaryCta.shortLabel}
+    </a>
+  </Container>
+</header>
