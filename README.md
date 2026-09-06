@@ -76,9 +76,7 @@ pnpm preview   # ビルド結果をローカルでプレビュー
 - **本番ドメイン**（`astro.config.mjs` の `site` と `src/data/site.ts` の `siteUrl`）
 - **tomocha予約サイトのURL**（`src/data/site.ts` の `reservationSiteUrl`。既契約企業向けの
   フッターリンク先。現在プレースホルダドメイン）
-- **FAQの回答**（`src/data/faq.ts`。ほとんどの項目が `confirmed: false` で「準備中」表示）
-- **対応エリアの正確な範囲・電話番号の有無**
-- **画像素材（人物写真）のWeb掲載ライセンス確認**（`素材/README.md` 参照）
+- **FAQの回答**（`src/data/faq.ts`。一部項目が `confirmed: false` で「準備中」表示）
 - `src/pages/privacy.astro` は最低限の内容で作成したドラフト。事業内容に合わせて
   内容を見直し、公開前に法務確認を受けること
 

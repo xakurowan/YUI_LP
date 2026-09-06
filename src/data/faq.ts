@@ -31,8 +31,9 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: '対応エリアはどこまでですか？出張費はかかりますか？',
-    answer: pending,
-    confirmed: false,
+    answer:
+      '宮城県仙台市を中心にご対応しております。出張費は10km未満は無料、10kmを超える場合は10kmごとに1,000円を頂戴しております。詳細な対応可否はお気軽にお問い合わせください。',
+    confirmed: true,
   },
   {
     question: '対応可能な時間帯・曜日は？（就業時間内／休憩時間／終業後）',
