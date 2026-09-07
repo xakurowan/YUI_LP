@@ -15,6 +15,22 @@
   --font-display: "Figtree", ui-sans-serif, system-ui, sans-serif;
 
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  /* Fluid typography: 標準サイズを画面幅に応じてなめらかに変化させる（テキストサイズの生値直書き禁止のためここに集約） */
+  --text-xs: clamp(0.6875rem, 1.6vw, 0.75rem);
+  --text-sm: clamp(0.8125rem, 1.8vw, 0.875rem);
+  --text-base: clamp(0.9375rem, 2vw, 1rem);
+  --text-lg: clamp(1.0625rem, 2.2vw, 1.125rem);
+  --text-xl: clamp(1.125rem, 2.6vw, 1.25rem);
+  --text-2xl: clamp(1.25rem, 3vw, 1.5rem);
+  --text-4xl: clamp(1.75rem, 4.5vw, 2.25rem);
+
+  /* 見出し・料金など個別サイズのフルードトークン */
+  /* text-hero: FVのH1専用。17文字1行(white-space:nowrap)がコンテナ幅にぴったり収まる比率(@container基準)。
+     コンテナクエリ未対応環境ではcqwがsmall viewport基準にフォールバックする。 */
+  --text-hero: clamp(1rem, 5.5cqw, 3.5rem);
+  --text-heading: clamp(1.5rem, 3.5vw, 2.25rem);
+  --text-price: clamp(2.5rem, 7vw, 4rem);
 }
 
 html {
@@ -41,6 +57,11 @@ h3 {
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.4;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 /* スクロール表示アニメーション（IntersectionObserver + CSS のみ） */
