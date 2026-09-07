@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import logoFull from '../assets/images/logo-full.png'
+import logoMark from '../assets/images/logo-mark.png'
 import Container from './Container.astro'
 import { primaryCta } from '../data/site'
 
@@ -14,8 +14,20 @@ const navItems = [
 
 <header id="site-header" class="fixed inset-x-0 top-0 z-40">
   <Container class="flex h-16 items-center justify-between">
-    <a href="#top" class="flex items-center gap-2">
-      <Image src={logoFull} alt="Private salon 結 -Yui-" height={40} width={40} loading="eager" />
+    <a href="#top" class="flex items-center gap-3" aria-label="Private salon 結 -Yui- トップへ">
+      <Image
+        src={logoMark}
+        alt=""
+        aria-hidden="true"
+        width={44}
+        height={44}
+        loading="eager"
+        class="h-11 w-11 shrink-0"
+      />
+      <span class="flex flex-col leading-tight">
+        <span class="font-display text-[11px] tracking-wide text-ink-muted">Private salon</span>
+        <span class="text-base font-bold text-ink">結 -Yui-</span>
+      </span>
     </a>
 
     <nav class="hidden items-center gap-8 md:flex">

@@ -1,11 +1,8 @@
 ---
-import { getImage } from 'astro:assets'
 import '../styles/global.css'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import MobileStickyBar from '../components/MobileStickyBar.astro'
-import logoMark from '../assets/images/logo-mark.png'
-import heroMain from '../assets/images/hero-main.png'
 import { site } from '../data/site'
 
 interface Props {
@@ -15,12 +12,9 @@ interface Props {
 
 const { title, description } = Astro.props
 
-const favicon32 = await getImage({ src: logoMark, width: 32, height: 32, format: 'png' })
-const touchIcon = await getImage({ src: logoMark, width: 180, height: 180, format: 'png' })
-const ogImage = await getImage({ src: heroMain, width: 1200, height: 630, format: 'jpg' })
-
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
-const ogImageUrl = new URL(ogImage.src, Astro.site)
+const ogImageUrl = new URL('/ogp.png', Astro.site)
+const logoUrl = new URL('/logo-mark-512.png', Astro.site)
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -28,6 +22,7 @@ const jsonLd = {
   name: site.businessName,
   description,
   image: ogImageUrl.toString(),
+  logo: logoUrl.toString(),
   url: canonicalUrl.toString(),
   // 住所・電話番号は未確定のため、確定するまでプロパティごと省略する（空文字・ダミー値は入れない）
 }
@@ -41,13 +36,19 @@ const jsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
 
-    <link rel="icon" type="image/png" sizes="32x32" href={favicon32.src} />
-    <link rel="apple-touch-icon" sizes="180x180" href={touchIcon.src} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon-simple-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-simple-16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/favicon-simple-180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#E0356B" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content="ja_JP" />
     <meta name="twitter:card" content="summary_large_image" />

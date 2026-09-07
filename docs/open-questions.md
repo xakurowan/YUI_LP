@@ -66,8 +66,23 @@
     `src/icons/paths.ts` に自作したインラインSVG（`--color-rose-brand` に統一した単色ライン
     アイコン）に置き換えて実装した（要件書 §2 の「依存を追加する際は承認を得ること」に配慮し、
     新規依存を増やさない方針を優先）。元のPNGアイコンは `public/images/` に残しているが未使用。
-    favicon／apple-touch-iconは `logo-mark.png` を `astro:assets` で32×32・180×180に
-    リサイズして生成しており、追加の素材は不要だった。
+
+    ロゴは新マーク（手のひらとハート／グラデーション円、支給素材一式は`logo/`）に差し替え済み
+    （`prompts/02-replace-logo.md`）。旧`logo-full.png`は削除。ヘッダーは`logo-mark.png`
+    （44px）とテキスト併記、favicon/apple-touch-icon/PWAマニフェスト用アイコンは支給の
+    書き出し済みファイル（`favicon-simple-*` / `logo-mark-*` / `logo-mark-maskable-512`）を
+    そのまま`public/`直下に配置して参照する方式に変更した（以前の`astro:assets`での動的
+    リサイズ生成はやめ、小サイズ専用の簡略版と通常版を要件通り使い分け）。
+
+    OGP画像（`public/ogp.png`）は要件通り新規作成（背景白・左にロゴ+屋号・中央〜右に
+    メインコピー・下部に小さく資格/対応/エリア）。ただし本サンドボックスにはフォント
+    レンダリング環境（fontconfig）が無く`sharp`/ImageMagickでの日本語テキスト焼き込みが
+    できなかったため、Satori（Vercel製、フォントデータを直接渡してシステムフォント非依存で
+    SVGレイアウトするライブラリ）+ `@resvg/resvg-js`で生成した。どちらも本番の依存には
+    加えておらず、生成用に一時ディレクトリへインストールして使い捨てたのみ
+    （`package.json`は無変更）。**表示上の見た目に問題がないか、事業者側で最終確認を推奨**
+    （本サンドボックスは実ブラウザでの目視確認ができないため、生成画像のPNGを直接確認した
+    のみで、Slack/LINE等の実際のOGP展開表示は未検証）。
 
 11. **正式ドメイン／公開URL**
     `canonical` タグ、OGP `og:url`、構造化データの `url` プロパティに必要。Cloudflare Pagesのプロジェクト名や
