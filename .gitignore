@@ -21,3 +21,6 @@ pnpm-debug.log*
 # OS / editor
 .DS_Store
 .idea/
+
+# prompts（作業指示書・ローカル用途）
+prompts/
