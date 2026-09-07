@@ -9,25 +9,24 @@ export type FaqItem = {
   confirmed: boolean
 }
 
-const pending =
-  '現在ご案内を準備中です。お手数ですがメールまたはLINEにて直接お問い合わせください。'
-
-// 質問文は要件書 §5 準拠（確定）。回答は現時点でほぼ未確定（docs/open-questions.md #4参照）。
+// 質問文は要件書 §5 準拠（確定）。回答は事業者確認済み（支払い方法の支払サイト等詳細のみ未確定）。
 export const faqItems: FaqItem[] = [
   {
     question: '施術にはどのくらいのスペースが必要ですか？（ベッド設置の可否／会議室でも可か）',
-    answer: pending,
-    confirmed: false,
+    answer:
+      '会議室や休憩スペースなど、施術用ベッドを設置できる2畳程度のスペースがあれば施術可能です。ベッドは弊社で持参いたしますので、会議室のご用意のみで対応できます。',
+    confirmed: true,
   },
   {
     question: '1回の訪問で何名まで施術できますか？',
-    answer: pending,
-    confirmed: false,
+    answer: 'ご訪問時間・人数に応じて調整いたします。まずはご希望人数をお知らせください。',
+    confirmed: true,
   },
   {
     question: '社員は着替えが必要ですか？（着衣のまま可か）',
-    answer: pending,
-    confirmed: false,
+    answer:
+      '着衣のまま施術可能なメニューをご用意しております。動きやすい服装であれば着替えの必要はございません。',
+    confirmed: true,
   },
   {
     question: '対応エリアはどこまでですか？出張費はかかりますか？',
@@ -37,18 +36,21 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: '対応可能な時間帯・曜日は？（就業時間内／休憩時間／終業後）',
-    answer: pending,
-    confirmed: false,
+    answer:
+      '平日の就業時間内（休憩時間帯を含む）でのご利用が中心ですが、終業後のご利用もご相談に応じております。土日祝日は応相談です。',
+    confirmed: true,
   },
   {
     question: '最低利用時間や最低人数はありますか？',
-    answer: pending,
-    confirmed: false,
+    answer:
+      '最低利用時間の目安は1回2時間からです。最低人数の指定は設けておりませんので、少人数からでもご相談ください。',
+    confirmed: true,
   },
   {
     question: 'キャンセル・日程変更のポリシーは？',
-    answer: pending,
-    confirmed: false,
+    answer:
+      'ご訪問日の3営業日前までのご連絡でキャンセル・日程変更を承ります。それ以降はキャンセル料が発生する場合がございます。',
+    confirmed: true,
   },
   {
     question: '支払い方法は？（請求書払い・銀行振込・支払サイト）',
@@ -58,13 +60,15 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: '定期訪問の契約形態は？（都度／月額／年間）',
-    answer: pending,
-    confirmed: false,
+    answer:
+      '都度契約・月額契約のいずれにも対応しております。頻度やご予算に応じてプランをご提案いたします。',
+    confirmed: true,
   },
   {
     question: '衛生管理はどうしていますか？',
-    answer: pending,
-    confirmed: false,
+    answer:
+      '施術前後の手指消毒、タオル・シーツ等備品の都度交換・洗浄など、衛生管理を徹底しております。',
+    confirmed: true,
   },
   {
     question: '効果はどのくらいで実感できますか？',
