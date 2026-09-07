@@ -12,7 +12,16 @@ const year = new Date().getFullYear()
   <Container>
     <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
       <div class="flex items-start gap-3">
-        <Image src={logoMark} alt="" aria-hidden="true" width={32} height={32} loading="lazy" />
+        <Image
+          src={logoMark}
+          alt=""
+          aria-hidden="true"
+          width={130}
+          height={130}
+          densities={[1, 2, 3]}
+          loading="lazy"
+          class="h-[130px] w-[130px] shrink-0"
+        />
         <div>
           <p class="font-bold">{site.businessName}</p>
           <p class="mt-1 text-sm text-ink-muted">{site.serviceArea}</p>
