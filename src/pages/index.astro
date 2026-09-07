@@ -19,8 +19,6 @@ import { corporateBadges, trustBadges } from '../data/corporate'
 import { faqItems } from '../data/faq'
 import { primaryCta, secondaryCta, site } from '../data/site'
 
-const linePending = site.lineUrl === null
-
 const pageTitle = '出張整体で健康経営をサポート｜Private salon 結 -Yui-（法人向け）'
 const pageDescription =
   'デスクワークによる肩こり・腰痛・疲労感など、社員の不調をケアする法人向け出張整体。国家資格保有の柔道整復師がオフィスへ訪問し、健康経営と働きやすい職場づくりをお手伝いします。'
@@ -30,14 +28,14 @@ const pageDescription =
   <!-- 01. ファーストビュー -->
   <section class="relative overflow-hidden bg-white">
     <Container class="grid gap-10 py-16 md:grid-cols-2 md:items-center md:gap-12 md:py-24">
-      <div data-reveal>
+      <div data-reveal class="@container">
         <p class="font-display text-sm font-bold tracking-wide text-rose-deep">
           社員の健康は、企業の力になる。
         </p>
-        <h1 class="mt-3 text-[clamp(2rem,5vw,3.5rem)] font-bold text-ink">
-          出張整体で健康経営を<br class="hidden sm:block" />サポートします
+        <h1 class="mt-3 whitespace-nowrap text-hero font-bold text-ink">
+          出張整体で健康経営をサポートします
         </h1>
-        <p class="mt-6 text-base leading-loose text-ink-muted md:text-lg">
+        <p class="mt-6 text-base leading-loose text-ink-muted">
           デスクワークによる肩こり・腰痛・疲労感など、社員の不調をケアし、生産性向上と働きやすい職場づくりをお手伝いします。
         </p>
 
@@ -52,9 +50,11 @@ const pageDescription =
           }
         </ul>
 
-        <div class="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-          <CtaButton href={primaryCta.href} variant="primary">{primaryCta.label}</CtaButton>
-          <CtaButton href={secondaryCta.href} variant="secondary" pending={linePending}>
+        <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+          <CtaButton href={primaryCta.href} variant="primary" class="w-full sm:w-auto">
+            {primaryCta.label}
+          </CtaButton>
+          <CtaButton href={secondaryCta.href} variant="secondary" class="w-full sm:w-auto">
             {secondaryCta.label}
           </CtaButton>
         </div>
@@ -80,7 +80,7 @@ const pageDescription =
     <Container>
       <h2
         data-reveal
-        class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink"
+        class="text-center text-heading font-bold text-ink"
       >
         オフィスで、こんな声が上がっていませんか？
       </h2>
@@ -107,7 +107,7 @@ const pageDescription =
   <!-- 03. 共感／ブリッジ -->
   <section class="bg-white py-24 md:py-36">
     <Container class="max-w-[720px] text-center">
-      <p data-reveal class="text-lg leading-loose text-ink md:text-xl">
+      <p data-reveal class="text-lg leading-loose text-ink">
         不調は、本人の努力不足ではなく、働き方や職場環境から生まれることも少なくありません。
         <br class="hidden sm:block" />
         だからこそ、専門家によるケアを職場に取り入れることが、働きやすさへの近道になります。
@@ -118,7 +118,7 @@ const pageDescription =
   <!-- 04. 選ばれる3つの理由 -->
   <section class="bg-white pb-20 md:pb-32">
     <Container>
-      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+      <h2 data-reveal class="text-center text-heading font-bold text-ink">
         選ばれる3つの理由
       </h2>
       <div class="mt-12 grid gap-6 md:grid-cols-3">
@@ -146,7 +146,7 @@ const pageDescription =
   <!-- 05. サービス内容 -->
   <section id="service" class="bg-rose-tint py-20 md:py-32">
     <Container>
-      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+      <h2 data-reveal class="text-center text-heading font-bold text-ink">
         サービス内容
       </h2>
       <div class="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
@@ -196,7 +196,7 @@ const pageDescription =
         class="w-full rounded-2xl object-cover shadow-card"
       />
       <div data-reveal>
-        <h2 class="text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+        <h2 class="text-heading font-bold text-ink">
           国家資格保有の柔道整復師が訪問します
         </h2>
         <p class="mt-6 text-base leading-loose text-ink-muted">
@@ -214,7 +214,7 @@ const pageDescription =
         class="rounded-2xl border border-line bg-white px-6 py-12 text-center shadow-card md:px-12"
       >
         <p class="text-sm font-bold text-ink-muted">料金プラン</p>
-        <p class="mt-4 font-display text-[clamp(2.5rem,7vw,4rem)] font-bold text-rose-brand">
+        <p class="mt-4 font-display text-price font-bold text-rose-brand">
           2時間 22,000円〜
           <span class="text-2xl font-bold text-ink-muted">（税込）</span>
         </p>
@@ -223,7 +223,9 @@ const pageDescription =
           <li>延長・定期訪問プランや無料お見積りも承っております。</li>
         </ul>
         <div class="mt-8">
-          <CtaButton href={primaryCta.href} variant="primary">{primaryCta.label}</CtaButton>
+          <CtaButton href={primaryCta.href} variant="primary" class="w-full sm:w-auto">
+            {primaryCta.label}
+          </CtaButton>
         </div>
       </div>
     </Container>
@@ -232,7 +234,7 @@ const pageDescription =
   <!-- 08. ご利用の流れ -->
   <section id="flow" class="bg-white py-20 md:py-32">
     <Container>
-      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+      <h2 data-reveal class="text-center text-heading font-bold text-ink">
         ご利用の流れ
       </h2>
       <div class="relative mt-14 grid gap-10 md:grid-cols-4 md:gap-6">
@@ -267,7 +269,7 @@ const pageDescription =
   <!-- 09. 導入企業様の声 -->
   <section class="bg-rose-tint py-20 md:py-32">
     <Container>
-      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+      <h2 data-reveal class="text-center text-heading font-bold text-ink">
         導入企業様の声
       </h2>
       <div class="mt-12 grid gap-6 md:grid-cols-2">
@@ -292,7 +294,7 @@ const pageDescription =
   <!-- 10. こんな企業様におすすめです -->
   <section class="bg-white py-20 md:py-32">
     <Container class="max-w-[720px]">
-      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+      <h2 data-reveal class="text-center text-heading font-bold text-ink">
         こんな企業様におすすめです
       </h2>
       <ul class="mt-10 space-y-4">
@@ -305,7 +307,7 @@ const pageDescription =
               class="flex items-start gap-3 rounded-2xl bg-rose-tint px-5 py-4"
             >
               <Icon name="check" class="mt-0.5 h-5 w-5 shrink-0 text-rose-brand" />
-              <span class="text-sm leading-relaxed text-ink md:text-base">{item}</span>
+              <span class="text-base leading-relaxed text-ink">{item}</span>
             </li>
           ))
         }
@@ -316,7 +318,7 @@ const pageDescription =
   <!-- 11. 法人対応 -->
   <section class="bg-rose-tint py-20 md:py-32">
     <Container>
-      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+      <h2 data-reveal class="text-center text-heading font-bold text-ink">
         法人対応
       </h2>
       <div class="mt-12 grid gap-6 md:grid-cols-3">
@@ -347,7 +349,7 @@ const pageDescription =
   <!-- 12. FAQ -->
   <section id="faq" class="bg-white py-20 md:py-32">
     <Container class="max-w-[800px]">
-      <h2 data-reveal class="text-center text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+      <h2 data-reveal class="text-center text-heading font-bold text-ink">
         よくあるご質問
       </h2>
       <div class="mt-10 divide-y divide-line border-t border-b border-line">
@@ -369,12 +371,17 @@ const pageDescription =
   <!-- 13. クロージングCTA -->
   <section class="bg-rose-tint py-20 md:py-32">
     <Container class="max-w-[720px] text-center">
-      <h2 data-reveal class="text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-ink">
+      <h2 data-reveal class="text-heading font-bold text-ink">
         まずは資料や見積りで、社内の検討材料にしてください
       </h2>
-      <div data-reveal class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-        <CtaButton href={primaryCta.href} variant="primary">{primaryCta.label}</CtaButton>
-        <CtaButton href={secondaryCta.href} variant="secondary" pending={linePending}>
+      <div
+        data-reveal
+        class="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4"
+      >
+        <CtaButton href={primaryCta.href} variant="primary" class="w-full sm:w-auto">
+          {primaryCta.label}
+        </CtaButton>
+        <CtaButton href={secondaryCta.href} variant="secondary" class="w-full sm:w-auto">
           {secondaryCta.label}
         </CtaButton>
       </div>

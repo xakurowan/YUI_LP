@@ -1,7 +1,5 @@
 ---
-import { primaryCta, secondaryCta, site } from '../data/site'
-
-const linePending = site.lineUrl === null
+import { primaryCta, secondaryCta } from '../data/site'
 ---
 
 <div
@@ -14,21 +12,10 @@ const linePending = site.lineUrl === null
   >
     {primaryCta.shortLabel}
   </a>
-  {
-    linePending ? (
-      <span
-        aria-disabled="true"
-        class="flex-1 rounded-full border-2 border-rose-brand px-4 py-3 text-center text-sm font-bold text-rose-deep"
-      >
-        {secondaryCta.shortLabel}
-      </span>
-    ) : (
-      <a
-        href={secondaryCta.href}
-        class="flex-1 rounded-full border-2 border-rose-brand px-4 py-3 text-center text-sm font-bold text-rose-deep"
-      >
-        {secondaryCta.shortLabel}
-      </a>
-    )
-  }
+  <a
+    href={secondaryCta.href}
+    class="flex-1 rounded-full border-2 border-rose-brand px-4 py-3 text-center text-sm font-bold text-rose-deep"
+  >
+    {secondaryCta.shortLabel}
+  </a>
 </div>

@@ -3,34 +3,18 @@ interface Props {
   href: string
   variant?: 'primary' | 'secondary'
   class?: string
-  pending?: boolean
 }
 
-const { href, variant = 'primary', class: className = '', pending = false } = Astro.props
+const { href, variant = 'primary', class: className = '' } = Astro.props
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-base font-bold transition-colors focus-visible:outline-2'
+  'flex min-h-12 items-center justify-center gap-2 rounded-full px-7 py-3.5 text-base font-bold transition-colors focus-visible:outline-2'
 const styles =
   variant === 'primary'
     ? 'bg-rose-brand text-white hover:bg-rose-deep'
     : 'border-2 border-rose-brand text-rose-deep bg-white hover:bg-rose-tint'
 ---
 
-<div class="inline-flex flex-col items-center gap-1.5">
-  {
-    pending ? (
-      <span aria-disabled="true" class:list={[base, styles, className]}>
-        <slot />
-      </span>
-    ) : (
-      <a href={href} class:list={[base, styles, className]}>
-        <slot />
-      </a>
-    )
-  }
-  {
-    pending && (
-      <p class="text-xs text-ink-muted">現在準備中です。お急ぎの方はメールでご連絡ください</p>
-    )
-  }
-</div>
+<a href={href} class:list={[base, styles, className]}>
+  <slot />
+</a>

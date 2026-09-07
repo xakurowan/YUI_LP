@@ -26,8 +26,11 @@ export const primaryCta = {
 }
 
 export const secondaryCta = {
-  label: 'LINEで相談する',
-  shortLabel: 'LINEで相談',
-  // lineUrl が未確定の間は "#" にし、UI側で「準備中」を示すインジケーターを添える
-  href: site.lineUrl ?? '#',
+  // lineUrl が未確定の間、押しても何も起きないリンクを主要導線に置かないよう
+  // メール問い合わせに差し替える（docs/fix-log.md参照）。URLが決まり次第自動でLINEに切り替わる。
+  label: site.lineUrl ? 'LINEで相談する' : 'メールで問い合わせる',
+  shortLabel: site.lineUrl ? 'LINEで相談' : 'メールで問い合わせ',
+  href:
+    site.lineUrl ??
+    `mailto:${site.email}?subject=${encodeURIComponent('【結 -Yui-】お問い合わせ')}`,
 }
