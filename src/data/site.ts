@@ -7,6 +7,7 @@ export const site = {
   tagline: '〜ご縁を結ぶ癒やし空間〜',
   email: 'sendai.private.salon.yui@gmail.com',
   serviceArea: '宮城県仙台市エリア',
+  representativeName: '竹内智香',
 
   // TODO: LINE公式アカウントの友だち追加URL（QR画像はあるが遷移先URLが未確定。docs/open-questions.md #3）
   lineUrl: null as string | null,

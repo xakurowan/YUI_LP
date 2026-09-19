@@ -24,6 +24,10 @@ const jsonLd = {
   image: ogImageUrl.toString(),
   logo: logoUrl.toString(),
   url: canonicalUrl.toString(),
+  founder: {
+    '@type': 'Person',
+    name: site.representativeName,
+  },
   // 住所・電話番号は未確定のため、確定するまでプロパティごと省略する（空文字・ダミー値は入れない）
 }
 ---
